@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voxtron - ระบบแปลงเสียงเป็นข้อความ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo {
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        }
+
+        .logo-icon i {
+            font-size: 2.5rem;
+            color: white;
+            z-index: 1;
+            position: relative;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-title {
+            color: #2d3748;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-subtitle {
+            color: #718096;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            display: none;
+        }
+
+        .subtitle {
+            color: #718096;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 50px;
+            line-height: 1.6;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .emergency-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            text-decoration: none;
+            min-height: 60px;
+        }
+
+        .emergency-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        .emergency-btn:active {
+            transform: translateY(0);
+        }
+
+        .fire-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+        }
+
+        .animal-btn {
+            background: linear-gradient(135deg, #ffa726, #ff9800);
+            box-shadow: 0 4px 15px rgba(255, 167, 38, 0.3);
+        }
+
+        .animal-btn:hover {
+            box-shadow: 0 8px 25px rgba(255, 167, 38, 0.4);
+        }
+
+        .btn-icon {
+            font-size: 1.3rem;
+        }
+
+        .status-indicator {
+            margin-top: 30px;
+            padding: 15px;
+            background: rgba(34, 197, 94, 0.1);
+            border-radius: 10px;
+            color: #059669;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .logo-icon {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .logo-icon i {
+                font-size: 2rem;
+            }
+            
+            .logo-title {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .emergency-btn {
+                padding: 15px 25px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-microphone-alt"></i>
+            </div>
+            <div class="logo-text">
+                <div class="logo-title">Voxtron</div>
+                <div class="logo-subtitle">Speech Technology</div>
+            </div>
+        </div>
+        
+        <p class="subtitle">ระบบแปลงเสียงเป็นข้อความ<br>Speech to Text</p>
+        
+        <div class="button-container">
+            <button class="emergency-btn fire-btn" onclick="reportFire()">
+                <i class="fas fa-fire btn-icon"></i>
+                แจ้งเหตุไฟไหม้
+            </button>
+            
+            <button class="emergency-btn animal-btn" onclick="reportAnimal()">
+                <i class="fas fa-paw btn-icon"></i>
+                แจ้งจับสัตว์ร้าย
+            </button>
+        </div>
+        
+        <div class="status-indicator">
+            <i class="fas fa-circle pulse"></i>
+            ระบบพร้อมใช้งาน
+        </div>
+    </div>
+
+    <script>
+        function reportFire() {
+            // Add haptic feedback if available
+            if (navigator.vibrate) {
+                navigator.vibrate([200, 100, 200]);
+            }
+            
+            // Show confirmation
+            alert('กำลังแจ้งเหตุไฟไหม้...\nระบบจะส่งข้อมูลไปยังหน่วยงานที่เกี่ยวข้อง');
+            
+            // Here you would typically send data to your backend
+            console.log('Fire emergency reported');
+        }
+
+        function reportAnimal() {
+            // Add haptic feedback if available
+            if (navigator.vibrate) {
+                navigator.vibrate([200, 100, 200]);
+            }
+            
+            // Show confirmation
+            alert('กำลังแจ้งจับสัตว์ร้าย...\nระบบจะส่งข้อมูลไปยังหน่วยงานที่เกี่ยวข้อง');
+            
+            // Here you would typically send data to your backend
+            console.log('Animal emergency reported');
+        }
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.emergency-btn');
+            
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px) scale(1.02)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
