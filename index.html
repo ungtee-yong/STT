@@ -37,21 +37,78 @@
 
         .logo {
             margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .logo i {
-            font-size: 4rem;
-            color: #667eea;
+        .logo-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 20px;
-            display: block;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        }
+
+        .logo-icon i {
+            font-size: 2.5rem;
+            color: white;
+            z-index: 1;
+            position: relative;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-title {
+            color: #2d3748;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-subtitle {
+            color: #718096;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
         h1 {
-            color: #2d3748;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: -0.02em;
+            display: none;
         }
 
         .subtitle {
@@ -148,8 +205,17 @@
                 padding: 40px 20px;
             }
             
-            h1 {
+            .logo-icon {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .logo-icon i {
                 font-size: 2rem;
+            }
+            
+            .logo-title {
+                font-size: 2.2rem;
             }
             
             .subtitle {
@@ -166,10 +232,15 @@
 <body>
     <div class="container">
         <div class="logo">
-            <i class="fas fa-microphone-alt"></i>
+            <div class="logo-icon">
+                <i class="fas fa-microphone-alt"></i>
+            </div>
+            <div class="logo-text">
+                <div class="logo-title">Voxtron</div>
+                <div class="logo-subtitle">Speech Technology</div>
+            </div>
         </div>
         
-        <h1>Voxtron</h1>
         <p class="subtitle">ระบบแปลงเสียงเป็นข้อความ<br>Speech to Text</p>
         
         <div class="button-container">
