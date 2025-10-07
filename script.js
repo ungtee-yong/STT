@@ -22,6 +22,9 @@ function initializeEventListeners() {
     document.getElementById('startDetails').addEventListener('click', startDetailsRecording);
     document.getElementById('stopDetails').addEventListener('click', stopDetailsRecording);
     
+    // Save address button
+    document.getElementById('saveAddress').addEventListener('click', saveAddress);
+    
     // Address form inputs
     const addressInputs = document.querySelectorAll('.address-form input');
     addressInputs.forEach(input => {
@@ -165,10 +168,9 @@ function showSearchResults(searchTerm) {
     
     // Sample search results (in real app, these would come from Google Places API)
     const sampleResults = [
-        '123 ถนนสุขุมวิท แขวงคลองตัน เขตวัฒนา กรุงเทพมหานคร 10110',
-        '456 ถนนพหลโยธิน ตำบลบางเขน อำเภอเมือง จังหวัดปทุมธานี 12120',
-        '789 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310',
-        '321 ถนนลาดพร้าว ตำบลลาดพร้าว อำเภอเมือง จังหวัดกรุงเทพมหานคร 10230'
+        'ที่อยุ่ 1 ต. 1',
+        'ที่อยุ่ 1 ต. 2',
+        'ที่อยุ่ 1 ต. 3'
     ];
     
     // Filter results based on search term
@@ -245,9 +247,9 @@ function updateMapWithAddress(address) {
 // Load sample addresses
 function loadSampleAddresses() {
     const sampleAddresses = [
-        '123 ถนนสุขุมวิท แขวงคลองตัน เขตวัฒนา กรุงเทพมหานคร 10110',
-        '456 ถนนพหลโยธิน ตำบลบางเขน อำเภอเมือง จังหวัดปทุมธานี 12120',
-        '789 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310'
+        'ที่อยุ่ 1 ต. 1',
+        'ที่อยุ่ 1 ต. 2',
+        'ที่อยุ่ 1 ต. 3'
     ];
     
     const addressList = document.getElementById('addressList');
@@ -260,6 +262,41 @@ function loadSampleAddresses() {
         addressItem.addEventListener('click', () => selectAddress(address));
         addressList.appendChild(addressItem);
     });
+}
+
+// Save address function
+function saveAddress() {
+    if (!validateAddressForm()) {
+        alert('กรุณากรอกข้อมูลให้ครบถ้วน');
+        return;
+    }
+    
+    // Get form data
+    const addressData = {
+        address: document.getElementById('address').value,
+        subdistrict: document.getElementById('subdistrict').value,
+        district: document.getElementById('district').value,
+        province: document.getElementById('province').value,
+        postalCode: document.getElementById('postalCode').value
+    };
+    
+    // Show success message
+    alert('บันทึกข้อมูลที่อยู่เรียบร้อยแล้ว!');
+    
+    // Log the data (in real app, this would be sent to server)
+    console.log('Saved address data:', addressData);
+    
+    // Optional: Clear form after saving
+    // clearAddressForm();
+}
+
+// Clear address form (optional function)
+function clearAddressForm() {
+    document.getElementById('address').value = '';
+    document.getElementById('subdistrict').value = '';
+    document.getElementById('district').value = '';
+    document.getElementById('province').value = '';
+    document.getElementById('postalCode').value = '';
 }
 
 // Validate address form

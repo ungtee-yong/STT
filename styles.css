@@ -157,6 +157,19 @@ body {
     box-shadow: 0 6px 20px rgba(69, 183, 209, 0.4);
 }
 
+.btn-save {
+    background: linear-gradient(45deg, #96c93d, #45b7d1);
+    color: white;
+    box-shadow: 0 4px 15px rgba(150, 201, 61, 0.3);
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(150, 201, 61, 0.4);
+}
+
 /* Text Area */
 .text-area-container {
     margin-bottom: 25px;
@@ -226,6 +239,11 @@ textarea:focus {
     padding: 25px;
     border-radius: 10px;
     border: 2px solid #e1e8ed;
+}
+
+.save-button-container {
+    margin-top: 20px;
+    text-align: center;
 }
 
 .address-form h3 {
