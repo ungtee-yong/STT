@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOXTRON - ระบบแจ้งเหตุไฟไหม้</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header with VOXTRON Logo -->
+        <header class="header">
+            <div class="logo-container">
+                <div class="logo">VOXTRON</div>
+                <div class="logo-subtitle">ระบบแจ้งเหตุไฟไหม้</div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Fire Reporting and Map Container -->
+            <div class="fire-map-container">
+                <!-- Section 1: Fire Incident Reporting -->
+                <section class="section fire-reporting">
+                    <h2 class="section-title">แจ้งเหตุไฟไหม้</h2>
+                    
+                    <div class="control-buttons">
+                        <button id="startRecording" class="btn btn-start">START</button>
+                        <button id="stopRecording" class="btn btn-stop" disabled>STOP</button>
+                    </div>
+
+                    <div class="text-area-container">
+                        <textarea id="incidentText" placeholder="รายละเอียดเหตุการณ์..." rows="4"></textarea>
+                    </div>
+
+                    <div class="search-container">
+                        <button id="searchBtn" class="btn btn-search">ค้นหา</button>
+                    </div>
+
+                    <div class="address-search">
+                        <h3>ที่อยู่ค้นหาบน Google</h3>
+                        <div id="addressList" class="address-list">
+                            <!-- Address list will be populated dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="address-form">
+                        <h3>ข้อมูลที่อยู่</h3>
+                        <div class="form-group">
+                            <label for="address">ที่อยู่:</label>
+                            <input type="text" id="address" name="address">
+                        </div>
+                        <div class="form-group">
+                            <label for="subdistrict">ตำบล/แขวง:</label>
+                            <input type="text" id="subdistrict" name="subdistrict">
+                        </div>
+                        <div class="form-group">
+                            <label for="district">อำเภอ/เขต:</label>
+                            <input type="text" id="district" name="district">
+                        </div>
+                        <div class="form-group">
+                            <label for="province">จังหวัด:</label>
+                            <input type="text" id="province" name="province">
+                        </div>
+                        <div class="form-group">
+                            <label for="postalCode">รหัสไปรษณี:</label>
+                            <input type="text" id="postalCode" name="postalCode">
+                        </div>
+                        <div class="save-button-container">
+                            <button id="saveAddress" class="btn btn-save">บันทึก</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Right Column: Map and Details -->
+                <div class="right-column">
+                    <!-- Section 2: Google Map -->
+                    <section class="section map-section">
+                        <h2 class="section-title">แผนที่บน Google Map</h2>
+                        <div id="map" class="google-map"></div>
+                    </section>
+
+                    <!-- Section 3: Details -->
+                    <section class="section details-section">
+                        <h2 class="section-title">รายละเอียด</h2>
+                        
+                        <div class="control-buttons">
+                            <button id="startDetails" class="btn btn-start">START</button>
+                            <button id="stopDetails" class="btn btn-stop" disabled>STOP</button>
+                        </div>
+
+                        <div class="text-area-container">
+                            <textarea id="detailsText" placeholder="รายละเอียดเพิ่มเติม..." rows="4"></textarea>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
