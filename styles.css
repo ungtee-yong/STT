@@ -315,7 +315,7 @@ textarea:focus {
 
 @media (min-width: 1024px) {
     .fire-map-container {
-        grid-template-columns: 1.5fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 }
 
