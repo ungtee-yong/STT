@@ -73,26 +73,29 @@
                     </div>
                 </section>
 
-                <!-- Section 2: Google Map -->
-                <section class="section map-section">
-                    <h2 class="section-title">แผนที่บน Google Map</h2>
-                    <div id="map" class="google-map"></div>
-                </section>
+                <!-- Right Column: Map and Details -->
+                <div class="right-column">
+                    <!-- Section 2: Google Map -->
+                    <section class="section map-section">
+                        <h2 class="section-title">แผนที่บน Google Map</h2>
+                        <div id="map" class="google-map"></div>
+                    </section>
+
+                    <!-- Section 3: Details -->
+                    <section class="section details-section">
+                        <h2 class="section-title">รายละเอียด</h2>
+                        
+                        <div class="control-buttons">
+                            <button id="startDetails" class="btn btn-start">START</button>
+                            <button id="stopDetails" class="btn btn-stop" disabled>STOP</button>
+                        </div>
+
+                        <div class="text-area-container">
+                            <textarea id="detailsText" placeholder="รายละเอียดเพิ่มเติม..." rows="4"></textarea>
+                        </div>
+                    </section>
+                </div>
             </div>
-
-            <!-- Section 3: Details -->
-            <section class="section details-section">
-                <h2 class="section-title">รายละเอียด</h2>
-                
-                <div class="control-buttons">
-                    <button id="startDetails" class="btn btn-start">START</button>
-                    <button id="stopDetails" class="btn btn-stop" disabled>STOP</button>
-                </div>
-
-                <div class="text-area-container">
-                    <textarea id="detailsText" placeholder="รายละเอียดเพิ่มเติม..." rows="4"></textarea>
-                </div>
-            </section>
         </main>
     </div>
 

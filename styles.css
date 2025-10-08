@@ -68,6 +68,13 @@ body {
     align-items: start;
 }
 
+/* Right column containing map and details */
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
 /* Section Styles */
 .section {
     background: rgba(255, 255, 255, 0.95);
@@ -301,6 +308,10 @@ textarea:focus {
     .fire-map-container {
         grid-template-columns: 1fr;
     }
+    
+    .right-column {
+        gap: 20px;
+    }
 }
 
 @media (min-width: 768px) {
@@ -311,11 +322,19 @@ textarea:focus {
     .fire-map-container {
         grid-template-columns: 1fr 1fr;
     }
+    
+    .right-column {
+        gap: 25px;
+    }
 }
 
 @media (min-width: 1024px) {
     .fire-map-container {
         grid-template-columns: 1fr 1fr;
+    }
+    
+    .right-column {
+        gap: 30px;
     }
 }
 
