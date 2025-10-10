@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text Converter</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎤 Speech to Text Converter</h1>
+            <p>กดปุ่มเพื่อเริ่มบันทึกเสียงและแปลงเป็นข้อความ</p>
+        </div>
+        
+        <div class="main-content">
+            <div class="recording-section">
+                <button id="recordBtn" class="record-btn">
+                    <span class="btn-icon">🎤</span>
+                    <span class="btn-text">เริ่มบันทึกเสียง</span>
+                </button>
+                
+                <div class="recording-status" id="recordingStatus">
+                    <div class="status-indicator"></div>
+                    <span class="status-text">พร้อมบันทึกเสียง</span>
+                </div>
+            </div>
+            
+            <div class="result-section">
+                <h3>ผลลัพธ์:</h3>
+                <div class="text-result" id="textResult">
+                    <p class="placeholder">ข้อความที่แปลงจากเสียงจะแสดงที่นี่...</p>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="copyBtn" class="action-btn copy-btn" disabled>
+                        <span class="btn-icon">📋</span>
+                        คัดลอก
+                    </button>
+                    <button id="clearBtn" class="action-btn clear-btn" disabled>
+                        <span class="btn-icon">🗑️</span>
+                        ล้าง
+                    </button>
+                </div>
+            </div>
+            
+            <div class="settings-section">
+                <h3>การตั้งค่า:</h3>
+                <div class="setting-item">
+                    <label for="languageSelect">ภาษา:</label>
+                    <select id="languageSelect">
+                        <option value="th-TH">ไทย (th-TH)</option>
+                        <option value="en-US">English (en-US)</option>
+                        <option value="en-GB">English UK (en-GB)</option>
+                        <option value="ja-JP">日本語 (ja-JP)</option>
+                        <option value="ko-KR">한국어 (ko-KR)</option>
+                        <option value="zh-CN">中文 (zh-CN)</option>
+                    </select>
+                </div>
+                
+                <div class="setting-item">
+                    <label for="sampleRate">Sample Rate:</label>
+                    <select id="sampleRate">
+                        <option value="16000">16,000 Hz</option>
+                        <option value="44100">44,100 Hz</option>
+                        <option value="48000">48,000 Hz</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Powered by Google Speech-to-Text API</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
