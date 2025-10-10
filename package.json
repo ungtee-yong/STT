@@ -1,0 +1,17 @@
+{
+  "name": "microphone-recorder",
+  "version": "1.0.0",
+  "description": "Node.js application to record audio from microphone and save as WAV file",
+  "main": "record.js",
+  "scripts": {
+    "start": "node record.js",
+    "test": "node test-record.js"
+  },
+  "dependencies": {
+    "mic": "^2.1.2",
+    "wav": "^1.0.2"
+  },
+  "keywords": ["audio", "recording", "microphone", "wav"],
+  "author": "",
+  "license": "MIT"
+}
